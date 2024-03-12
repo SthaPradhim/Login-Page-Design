@@ -24,6 +24,7 @@ main {
   display: grid;
   place-items: center;
   position: relative;
+  overflow: hidden;
 }
 
 form {
@@ -33,6 +34,7 @@ form {
   flex-direction: column;
   gap: 10px;
   text-align: center;
+  transition: 0.3s;
 }
 
 header {
@@ -86,7 +88,7 @@ button::before {
   --border: 2px;
   border: var(--border) solid #304221;
   border-radius: 4px;
-  transition: .2s;
+  transition: 0.2s;
 }
 button:hover::before {
   inset: calc(var(--border) * -2);
@@ -105,15 +107,30 @@ a {
   position: relative;
 }
 a::before {
-position:absolute;
-content: "";
-bottom: -3px;
-width: 100%;
-height: 2px;
-background-color: #fff;
-transition: .2s;
-transform: scaleX(0);
+  position: absolute;
+  content: "";
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  transition: 0.2s;
+  transform: scaleX(0);
 }
-a:hover::before{
-    transform: scaleX(1);
+a:hover::before {
+  transform: scaleX(1);
+}
+
+#signup {
+  transform: translateY(500px);
+}
+
+body.active #login {
+  transform: translateY(-500px);
+}
+body.active #signup {
+  transform: translateY(0);
+}
+body.active main {
+  transition: 0.3s;
+  height: 500px;
 }
